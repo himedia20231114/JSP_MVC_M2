@@ -5,7 +5,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import board.BoardDAO;
 import board.BoardDTO;
@@ -76,10 +80,27 @@ public class Board_Controller extends HttpServlet {
 			System.out.println("/getBoardList.do 요청");
 			//로직 처리 
 			
+			//1. BoardDTO 객체 생성 
+			BoardDTO dto = new BoardDTO(); 
 			
+			//2. BoardDAO 객체의 getBoardList(dto) 
+			BoardDAO dao = new BoardDAO (); 
 			
+			//리턴 받을 변수 선언 
+			List<BoardDTO> boardList = new ArrayList<>(); 
 			
+			//boardList : DB의 Board 테이블의 레코드를 dto 로 저장후 ArrayList 내의 각 방에 저장된 상태 
+			boardList = dao.getBoardList(dto); 
 			
+			//boardList 클라이언트 view 페이지로 전송 : Session 변수에 담아서 client 뷰페이지로 전송
+			//client 의 session 정보를 가져와서 session 변수에 할당. 
+			HttpSession session = request.getSession(); 
+			
+			//세션에 boardList 를 추가
+			session.setAttribute("boardList", boardList); 
+			
+			//클라이언트 뷰 페이지 
+			response.sendRedirect("getBoardList.jsp"); 
 			
 			
 		}else if (path.equals("/getBoard.do")) {

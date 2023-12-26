@@ -35,11 +35,6 @@ public class Board_getBoardList_Test {
 			System.out.println(b);
 		}
 		
-		
-		
-		
-		
-
 
 	}
 }

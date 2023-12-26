@@ -59,6 +59,9 @@ public class BoardDAO {
 	// DB의 레코드 하나를 BoardDTO에 담는다. 각각의 BoardDTO 를 ArrayList에 담아서 리턴 
 	// rs, pstmt, conn
 	public List<BoardDTO> getBoardList(BoardDTO dto) {
+		//중요 : ArryList 는 While 블락 밖에서 선언
+		//      ArryList에 저장되는  BoardDTO 선언은 while 블락 내부에서 선언 
+		
 		List<BoardDTO> boardList = new ArrayList<>(); 
 		
 		try {
