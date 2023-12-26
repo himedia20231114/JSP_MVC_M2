@@ -18,9 +18,7 @@ public class Board_Insert_Test {
 		//2. DAO 객체에 insertBoard(dto) 
 		BoardDAO dao = new BoardDAO(); 
 		
-		dao.insertBoard(dto);
-		
-		
+		dao.insertBoard(dto);		
 		
 	}
 
