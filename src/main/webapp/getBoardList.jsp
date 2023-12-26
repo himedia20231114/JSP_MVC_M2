@@ -9,9 +9,15 @@
 	// Session 변수에 저장된 ArrayList를 가지고 옮 
 	List<BoardDTO> boardList = new ArrayList<>(); 
 
-
 	// 세션에서 가져온 값은 Object 타입이어서 (List 타입으로 변환 )
-	boardList = (List) session.getAttribute("boardList"); 
+
+	try{
+		boardList = (List) session.getAttribute("boardList");
+		
+	}catch (Exception e){
+		response.sendRedirect("getBoardList.do"); 
+	}
+
 %>
     
 <!DOCTYPE html>
@@ -39,7 +45,12 @@
 		%>
 		
 		<tr><td align ="center"><%= k.getSeq() %></td>
-			<td><%= k.getTitle() %></td>
+			<!-- 제목에 링크를 건다 : 글 상세 내용을 볼수 있도록  -->
+			
+			<td>
+				<a href="getBoard.do?seq=<%= k.getSeq() %>"> <%= k.getTitle() %> </a>
+			</td>
+			
 			<td><%= k.getWrite() %></td>
 			<td><%= k.getRegdate() %></td>
 			<td><%= k.getCnt() %></td>
@@ -47,6 +58,11 @@
 	
 		<%
 			}
+		
+		// 모두 사용됨 : boardList
+		//세션 변수의 값을 제거 : 서버의 메모리에서 세션 변수 boardList에 저장한 값을 제거 
+		session.removeAttribute("boardList"); 
+		
 		%>
 	
 	</table>

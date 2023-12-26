@@ -72,8 +72,10 @@ public class Board_Controller extends HttpServlet {
 			//비즈니스 로직 완료 : DTO , DAO   
 			
 			// 4. 뷰 페이지 전송 : 값을 insertBoard 후 DB의 전체 레코드를 출력 페이지로 이동 
-				// 클라이언트가 /getBoardList.do 요청을 새롭게 요청함. 
-			response.sendRedirect("/getBoardList.do"); 
+				// 클라이언트가 getBoardList.do 요청을 새롭게 요청함. 
+				//주의 : http://localhost:8181/getBoardList.do   <== 오류 
+				    //  http://localhost:8181/JSP_MVC_M2/getBoardList.do   <== 정상  
+			response.sendRedirect("getBoardList.do"); 
 			
 					
 		}else if (path.equals("/getBoardList.do")) {		// DB의 레코드를 출력 하는 페이지 
@@ -106,6 +108,32 @@ public class Board_Controller extends HttpServlet {
 		}else if (path.equals("/getBoard.do")) {
 			System.out.println("/getBoard.do 요청");
 			//로직 처리 
+			
+			//1. clinet 넘어오는 파라미터 seq 변수의 값을 읽어서 dto에 저장후 dao.getBoard(dto) 
+			//http://localhost:8181/JSP_MVC_M2/getBoard.do?seq=5 
+			
+			int seq = Integer.parseInt(request.getParameter("seq")); 
+			
+			//2. dto에 seq 값을 setter 주입 
+			BoardDTO dto = new BoardDTO(); 
+			dto.setSeq(seq); 
+			
+			//3. DAO의 getBoard(dto) 호출후 리턴 값을 받아서 저장 
+			BoardDAO dao = new BoardDAO(); 
+			
+			//리턴값을 받을 DTO 선언 
+			BoardDTO board = new BoardDTO(); 
+			board = dao.getBoard(dto); 
+			
+			//4. 세션 변수에 저장후 뷰 페이지로 전송 , 
+			HttpSession session = request.getSession(); 
+			
+			session.setAttribute("board", board); 
+			
+			//5. 뷰 페이지 
+			response.sendRedirect("getBoard.jsp"); 
+			
+			
 		}else if (path.equals("/updateBoard.do")) {
 			System.out.println("/updateBoard.do 요청");
 			//로직 처리 
