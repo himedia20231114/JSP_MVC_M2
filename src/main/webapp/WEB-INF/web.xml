@@ -49,4 +49,14 @@
     <servlet-name>Test_Controller02</servlet-name>
     <url-pattern>/Test_Controller02</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Test_Controller03</display-name>
+    <servlet-name>Test_Controller03</servlet-name>
+    <servlet-class>controller.Test_Controller03</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Test_Controller03</servlet-name>
+    <url-pattern>/Test_Controller03</url-pattern>
+  </servlet-mapping>
 </web-app>

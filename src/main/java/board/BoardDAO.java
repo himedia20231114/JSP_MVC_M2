@@ -67,6 +67,7 @@ public class BoardDAO {
 		
 		try {
 			conn = JDBCUtil.getConnection(); 	//conn 객체 활성화 : Oracle , XE , HR12 , 1234 
+			//BOARD_LIST = "select * from board order by seq desc" 
 			pstmt = conn.prepareStatement(BOARD_LIST) ; 
 			
 			// pstmt 를 실행후 rs 에 레코드를 저장 

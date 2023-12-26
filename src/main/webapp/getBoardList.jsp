@@ -14,9 +14,6 @@
 	try{
 		boardList = (List) session.getAttribute("boardList");
 		
-	}catch (Exception e){
-		response.sendRedirect("getBoardList.do"); 
-	}
 
 %>
     
@@ -41,6 +38,7 @@
 		
 		<!-- ArrayList의 BoardDTO를 끄집어내서 출력 : loop 돌리면서 출력  -->
 		<%
+
 			for (BoardDTO k : boardList) {
 		%>
 		
@@ -58,11 +56,14 @@
 	
 		<%
 			}
-		
+
 		// 모두 사용됨 : boardList
 		//세션 변수의 값을 제거 : 서버의 메모리에서 세션 변수 boardList에 저장한 값을 제거 
 		session.removeAttribute("boardList"); 
 		
+	}catch (Exception e){
+		response.sendRedirect("getBoardList.do"); 
+	}
 		%>
 	
 	</table>
