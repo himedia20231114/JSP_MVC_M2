@@ -28,6 +28,8 @@ public class BoardDAO {
 	// DB의 Board 테이블의 업데이트 쿼리 
 	private final String BOARD_UPDATE = "update board set title= ?, write= ? , content = ? where seq = ?"; 
 	
+	// DB의 Board 테이블의 레코드를 삭제 
+	private final String BOARD_DELETE = "delete board where seq = ?";
 	
 	//insertBoard(BoardDTO dto) 메소드  : 
 	public void insertBoard (BoardDTO dto) {
@@ -176,7 +178,31 @@ public class BoardDAO {
 		
 	}
 	
-	
+	// 글 삭제 메소드 : deleteBoard(dto) 
+	public void deleteBoard (BoardDTO dto) {
+		
+		try {
+			conn = JDBCUtil.getConnection(); 
+			// BOARD_DELETE = "delete board where seq = ?"
+			pstmt = conn.prepareStatement(BOARD_DELETE); 
+			
+			// ? 변수값 할당. 
+			pstmt.setInt(1, dto.getSeq());
+			
+			// 쿼리 실행 
+			pstmt.executeUpdate();   // insert, update, delete 
+			
+			System.out.println("DB의 레코드 삭제 성공");
+			
+		}catch (Exception e) {
+			System.out.println("DB의 레코드 삭제 실패");
+			e.printStackTrace();
+			
+		}finally {
+			JDBCUtil.close(pstmt, conn);
+		}
+		
+	}
 	
 	
 }
