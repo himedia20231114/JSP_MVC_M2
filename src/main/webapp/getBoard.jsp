@@ -55,6 +55,15 @@
 		
 		</table>
 	</form>
+	
+	<br> <br> 
+	<a href = "deleteBoard.do?seq=<%= board.getSeq() %>" >
+		글 삭제 
+	</a>
+	
+	
+	
+	
 	</center>
 </body>
 </html>

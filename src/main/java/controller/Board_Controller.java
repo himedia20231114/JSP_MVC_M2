@@ -137,6 +137,36 @@ public class Board_Controller extends HttpServlet {
 		}else if (path.equals("/updateBoard.do")) {
 			System.out.println("/updateBoard.do 요청");
 			//로직 처리 
+			//1. 클라이언트의 파라미터의 변수를 받아서 새로운 변수에 저장 
+			String title = request.getParameter("title"); 
+			String write = request.getParameter("write"); 
+			String content = request.getParameter("content"); 
+			int seq = Integer.parseInt(request.getParameter("seq")); 
+			
+			// 변수값 출력 :
+			/*
+			System.out.println(title);
+			System.out.println(write);
+			System.out.println(content);
+			System.out.println(seq);
+			*/ 
+			
+			//2. 변수를 BoardDTO에 setter 주입 
+			BoardDTO dto = new BoardDTO(); 
+			dto.setTitle(title); 
+			dto.setWrite(write); 
+			dto.setContent(content); 
+			dto.setSeq(seq); 
+			
+			//3. BoardDAO 에 updateBoard(dto)  
+			BoardDAO dao = new BoardDAO (); 
+			dao.updateBoard(dto); 
+			
+			//4. 뷰 페이지로 이동 ( 업데이트 후 리스트 페이지로 이동  
+			response.sendRedirect("getBoardList.do");
+			
+			
+			
 		}else if (path.equals("/deleteBoard.do")) {
 			System.out.println("/deleteBoard.do 요청");
 			//로직 처리 
