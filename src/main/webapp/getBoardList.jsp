@@ -62,10 +62,13 @@ try {
 			} catch (Exception e) {
 			response.sendRedirect("getBoardList.do");
 			}
-	
 			%>
 
 		</table>
+
+		<br> <a href="http://localhost:8181/JSP_MVC_M2"> 홈으로 </a>
+		<p /> <a href= "insertBoard.jsp"> 새 글쓰기</a>
+
 	</center>
 </body>
 </html>

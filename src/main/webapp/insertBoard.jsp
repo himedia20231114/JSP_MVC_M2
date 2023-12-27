@@ -32,6 +32,12 @@
 		
 		</table>
 	</form>
+	
+		<br> <a href="http://localhost:8181/JSP_MVC_M2"> 홈으로 </a>
+		<p /> <a href= "getBoardList.do"> 글 목록 </a>
+	
+	
+	
 	</center>
 </body>
 </html>
