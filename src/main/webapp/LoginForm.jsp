@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%
+ 	//세션 변수의 값을 읽어옮 
+ 	
+ 	String sessionId = (String) session.getAttribute("id"); 
+ 	String sessionRole = (String) session.getAttribute("role"); 
+ 
+ %>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +20,11 @@
 	<h1> 로그인 폼 페이지 </h1>
 	<hr> 
 	<p /> 
+	
+	<%
+		if (sessionId == null ) {  //로그인 되지 않는 상태 
+	
+	%>
 	
 	<form method = "post" action = "login.us"> 
 		<table>
@@ -27,6 +42,21 @@
 	</form>
 	
 	<p /> <a href="http://localhost:8181/JSP_MVC_M2"> 홈으로 </a>
+
+	<%
+		} else {   // 로그인 된 상태 
+	%>
+	
+		<%= sessionId %> 님 로그인이 성공 되었습니다. 축하 합니다. ! <p /> 
+		당신의 권한은 <%= sessionRole %> 입니다. <p />  
+	
+		<a href = "logout.us"> 로그 아웃 </a>
+	
+	
+	<%
+		}
+	%>
+
 
 </body>
 </html>
