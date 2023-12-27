@@ -7,37 +7,49 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class User_Controller extends HttpServlet {
+// http://localhost:8181/JSP_MVC_M2/*.us
+@WebServlet ("*.us")
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public User_Controller() {
+       
+   public UserController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	
-		//http://localhost:8181/JSP_MVC_M2/*.act
-		
-		
-		//if else if 문으로 각 조건에 맞는 요청을 처리 하는 블락 생성 
-		
-		//"/insertUsers.act"
-		//"/updateUsers.act"
-		//"/deleteUsers.act"
-		//"/getUsers.act"
-		//"/getUsersList.act"
-		//"/login.act"
-		//aa aaa
-		
-		
+		//한글이 깨어지지 않도록 처리 ( client ==> server ) 
+		request.setCharacterEncoding("UTF-8");
 	
-	
-	
+		//1. 
+		String uri = request.getRequestURI(); 
+		//System.out.println(uri);
+		String path = uri.substring(uri.lastIndexOf("/")); 
+		//System.out.println(path);
+		
+		
+		if (path.equals("/login.us")) {
+			System.out.println("login.us 요청 처리");
+			
+			
+			
+			
+			
+		}else if (path.equals("/insertUsers.us")) {
+			System.out.println("insertUsers.us 요청 처리");
+			
+			
+		}
+		
+		
 	
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 
