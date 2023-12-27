@@ -25,6 +25,9 @@ public class BoardDAO {
 	// DB의 Board 테이블의 글 상세 조회 : 레코드 1개  <== dto
 	private final String BOARD_GET = "select * from board where seq = ?" ; 
 	
+	// DB의 Board 테이블의 업데이트 쿼리 
+	private final String BOARD_UPDATE = "update board set title= ?, write= ? , content = ? where seq = ?"; 
+	
 	
 	//insertBoard(BoardDTO dto) 메소드  : 
 	public void insertBoard (BoardDTO dto) {
@@ -143,6 +146,35 @@ public class BoardDAO {
 		return  board; 
 	}
 	
+	// 글 수정 메소드 : updateBoard(dto)
+	public void updateBoard(BoardDTO dto) {
+		System.out.println("updateBoard 메소드 호출됨");
+		
+		try {
+			conn = JDBCUtil.getConnection(); 
+			//BOARD_UPDATE = "update board set title= ?, write= ? , content = ? where seq = ?"
+			pstmt = conn.prepareStatement(BOARD_UPDATE); 
+			
+			// ? 변수에 값을 할당 
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getWrite());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setInt(4,dto.getSeq());
+			
+			//쿼리를 실행
+			pstmt.executeUpdate(); 		//insert, update, delete 구문일때 실행 
+			
+			System.out.println("DB 업테이트 성공 ");
+			
+		}catch (Exception e) {
+			System.out.println("DB 업테이트 실패 ");
+			e.printStackTrace();
+			
+		}finally {
+			JDBCUtil.close(pstmt, conn);
+		}
+		
+	}
 	
 	
 	

@@ -119,7 +119,10 @@ select * from users;
  7. View 페이지 생성 : html, jsp  <== webapp 
  
  ======================================================================
- 	client (view)  =====> 
+ ctrl + shift + F   :   코드 자동 정렬 , 협업시 코드 정렬 
+ 
+ 	client (view)  =====>      *.do 요청 ==> Controller (1.요청, 2. 로직(DTO,DAO), 3.뷰) 
+ 	html, jsp (서버에서 랜더링)  
  
  	
  
