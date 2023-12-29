@@ -25,7 +25,25 @@ try {
 	<center>
 		<h1>글 목록</h1>
 		<hr>
-
+		<!-- 검색 기능 추가 - 시작  -->
+		<table border = "1" width ="700px">
+			<tr><td> 
+				<form method="post" action = "getBoardList.do"> 
+					<select name ="searchCondition">
+						<option values = "TITLE"> 제목 검색 </option>
+						<option values = "WRITE"> 글쓴이 검색 </option>
+						<option values = "CONTENT"> 내용 검색 </option>
+						<option values = "REGDATE"> 제목 검색 </option>
+					</select>
+					
+					<input type = "text" name = "searchKeword" size = "40"> 
+					<input type = "submit" value = "검색 시작"> 
+					
+				</form>			
+			</td> </tr>	
+		</table>	
+		<!-- 검색 기능 추가 - 끝  -->
+		<p /> 
 		<table border="1" width="700px">
 			<tr>
 				<th bgcolor="orange" width="100px">번호</th>
@@ -67,7 +85,8 @@ try {
 		</table>
 
 		<br> <a href="http://localhost:8181/JSP_MVC_M2"> 홈으로 </a>
-		<p /> <a href= "insertBoard.jsp"> 새 글쓰기</a>
+		<p />
+		<a href="insertBoard.jsp"> 새 글쓰기</a>
 
 	</center>
 </body>

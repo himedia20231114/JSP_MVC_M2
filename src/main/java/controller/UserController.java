@@ -88,11 +88,8 @@ public class UserController extends HttpServlet {
 			
 			//뷰페이지로 이동 (처음 페이지로 이동)
 			response.sendRedirect("http://localhost:8181/JSP_MVC_M2"); 
-			
-			
-		}
-		
-		
+				
+		}	
 	
 	}
 
