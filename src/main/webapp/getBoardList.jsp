@@ -25,15 +25,18 @@ try {
 	<center>
 		<h1>글 목록</h1>
 		<hr>
-		<!-- 검색 기능 추가 - 시작  -->
+		<!-- 검색 기능 추가 - 시작 
+			
+		
+		 -->
 		<table border = "1" width ="700px">
 			<tr><td> 
 				<form method="post" action = "getBoardList.do"> 
 					<select name ="searchCondition">
-						<option values = "TITLE"> 제목 검색 </option>
-						<option values = "WRITE"> 글쓴이 검색 </option>
-						<option values = "CONTENT"> 내용 검색 </option>
-						<option values = "REGDATE"> 제목 검색 </option>
+						<option value = "TITLE"> 제목 검색 </option>
+						<option value = "WRITE"> 글쓴이 검색 </option>
+						<option value = "CONTENT"> 내용 검색 </option>
+						<option value = "REGDATE"> 날짜 검색 </option>
 					</select>
 					
 					<input type = "text" name = "searchKeword" size = "40"> 
@@ -42,6 +45,8 @@ try {
 				</form>			
 			</td> </tr>	
 		</table>	
+		* 날짜 검색시 : 23/12/29 형식으로 검색어에 넣으세요
+		
 		<!-- 검색 기능 추가 - 끝  -->
 		<p /> 
 		<table border="1" width="700px">
